@@ -200,7 +200,6 @@ function NavBar({ scrollY }: { scrollY: number }) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-        {/* Logo */}
         <a href="#inicio" className="flex items-center gap-2.5 shrink-0">
           <img
             src="/LOGOTIPO_REFUGUI.png"
@@ -211,15 +210,12 @@ function NavBar({ scrollY }: { scrollY: number }) {
             <p className={`text-[10px] font-bold tracking-[0.22em] uppercase leading-none mb-0.5 ${scrolled ? 'text-slate-400' : 'text-white/70'}`}>
               Pousada
             </p>
-            <p
-              style={{ fontFamily: '"Dancing Script", cursive', fontSize: '1.1rem', color: scrolled ? '#0e6b8a' : '#ffffff' }}
-            >
+            <p style={{ fontFamily: '"Dancing Script", cursive', fontSize: '1.1rem', color: scrolled ? '#0e6b8a' : '#ffffff' }}>
               Refúgio das Estrelas
             </p>
           </div>
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-7">
           {links.map(([label, href]) => (
             <a
@@ -240,7 +236,6 @@ function NavBar({ scrollY }: { scrollY: number }) {
           </a>
         </div>
 
-        {/* Mobile burger */}
         <button
           className={`lg:hidden transition-colors ${scrolled ? 'text-slate-600' : 'text-white'}`}
           onClick={() => setOpen(!open)}
@@ -280,7 +275,7 @@ function NavBar({ scrollY }: { scrollY: number }) {
 function HeroSection({ scrollY }: { scrollY: number }) {
   return (
     <section id="inicio" className="relative h-screen min-h-[700px] overflow-hidden">
-      {/* Background image with parallax */}
+      {/* Background with parallax */}
       <div
         className="absolute inset-0"
         style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.12)` }}
@@ -293,11 +288,11 @@ function HeroSection({ scrollY }: { scrollY: number }) {
         <div className="absolute inset-0 bg-gradient-to-b from-[#074055]/55 via-[#063850]/50 to-[#041f2e]/85" />
       </div>
 
-      {/* Bottom fade to white */}
+      {/* Fade to white at bottom */}
       <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-white to-transparent z-10" />
 
-      {/* Hero content — single flex column, no absolute positioning conflicts */}
-      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4 pb-28">
+      {/* Content — single flex column, no absolute conflicts */}
+      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4 pb-24">
         {/* Logo */}
         <div className="animate-hero-logo mb-5">
           <img
@@ -307,7 +302,7 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           />
         </div>
 
-        {/* Location badge */}
+        {/* Badge */}
         <div className="animate-hero-badge mb-5 flex items-center gap-2.5 border border-white/30 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse shrink-0" />
           <span className="text-white/90 tracking-[0.2em] uppercase text-xs font-bold">
@@ -327,7 +322,7 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           Refúgio das Estrelas
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitles */}
         <p
           className="animate-hero-sub font-bold mb-2 tracking-[0.22em] uppercase text-xs sm:text-sm"
           style={{ color: '#a5f3fc' }}
@@ -338,8 +333,8 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           A melhor vista de Ilhabela. Suítes exclusivas · Vista 180° para o mar
         </p>
 
-        {/* CTA buttons */}
-        <div className="animate-hero-cta flex flex-col sm:flex-row gap-3 mb-16">
+        {/* CTAs */}
+        <div className="animate-hero-cta flex flex-col sm:flex-row gap-3 mb-10">
           <a
             href="#reservas"
             className="px-8 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-bold tracking-wider uppercase text-sm transition-all duration-300 rounded-full shadow-xl shadow-cyan-900/40 hover:shadow-cyan-400/50 flex items-center justify-center gap-2"
@@ -355,26 +350,26 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           </a>
         </div>
 
-        {/* Stats bar — inline, no absolute, so it doesn't overlap */}
-        <div className="animate-hero-stats flex items-center gap-5 sm:gap-10 bg-white/15 backdrop-blur-md border border-white/25 px-7 py-3.5 rounded-full">
+        {/* Stats bar */}
+        <div className="animate-hero-stats flex items-center gap-6 sm:gap-10 bg-white/15 backdrop-blur-md border border-white/25 px-7 py-3.5 rounded-full">
           {[
             { val: '4',    label: 'Suítes exclusivas' },
             { val: '5.0★', label: 'Avaliação média' },
             { val: '180°', label: 'Vista para o mar' },
           ].map(({ val, label }, i, arr) => (
-            <div key={label} className="flex items-center gap-5 sm:gap-10">
+            <div key={label} className="flex items-center gap-6 sm:gap-10">
               <div className="text-center">
                 <p className="text-white font-bold text-sm sm:text-base leading-none">{val}</p>
                 <p className="text-white/55 text-[10px] mt-1 whitespace-nowrap">{label}</p>
               </div>
-              {i < arr.length - 1 && <span className="w-px h-8 bg-white/20 hidden sm:block" />}
+              {i < arr.length - 1 && <span className="w-px h-7 bg-white/20 hidden sm:block" />}
             </div>
           ))}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="animate-hero-scroll absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+      <div className="animate-hero-scroll absolute bottom-5 left-1/2 -translate-x-1/2 z-20">
         <ChevronDown className="text-white/50 w-5 h-5 animate-bounce" />
       </div>
     </section>
@@ -395,7 +390,7 @@ function ExperienciaSection() {
           >
             Mais que uma hospedagem.
           </h2>
-          <p className="text-slate-500 font-light" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}>
+          <p className="text-slate-500 font-light" style={{ fontSize: 'clamp(1rem, 2.5vw, 1.4rem)' }}>
             Uma memória para sempre.
           </p>
           <TropicalDivider />
@@ -497,8 +492,7 @@ function SuitesSection() {
                     href="#reservas"
                     className="flex items-center gap-2 text-xs text-cyan-600 hover:text-cyan-500 font-bold uppercase tracking-widest transition-colors"
                   >
-                    Reservar
-                    <ArrowRight className="w-3 h-3" />
+                    Reservar <ArrowRight className="w-3 h-3" />
                   </a>
                 </div>
               </div>
@@ -1026,7 +1020,7 @@ function WhatsAppFAB() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Fale conosco pelo WhatsApp"
-      className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-4 py-3.5 rounded-full shadow-xl shadow-green-500/40 hover:shadow-green-400/60 transition-all duration-500 ${
+      className={`fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-4 py-3.5 rounded-full shadow-xl shadow-green-500/40 transition-all duration-500 ${
         visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
       }`}
     >

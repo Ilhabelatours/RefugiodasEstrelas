@@ -53,7 +53,7 @@ const SUITES: Suite[] = [
   {
     id: 1,
     nome: 'Suíte Vista Mar',
-    sub: '180° para o canal de São Sebastião',
+    sub: '180° para o mar de São Sebastião',
     descricao: 'A suíte mais procurada da pousada. Sacada privativa com espreguiçadeiras, cama king-size, banheira de imersão e décor em tons de areia e azul oceânico.',
     capacidade: '2 adultos',
     tamanho: '45 m²',
@@ -105,8 +105,8 @@ const SUITES: Suite[] = [
 ];
 
 const EXPERIENCIAS: Experiencia[] = [
-  { icon: Eye,    cor: '#5dade2', titulo: 'Vista Panorâmica',      descricao: 'Vista de 180° para o canal de São Sebastião. O mar de Ilhabela em toda a sua grandiosidade, do amanhecer ao entardecer.' },
-  { icon: Waves,  cor: '#2980b9', titulo: 'Piscina Borda Infinita', descricao: 'Piscina aquecida posicionada para se fundir com o horizonte do mar. O reflexo do azul é simplesmente hipnótico.' },
+  { icon: Eye,    cor: '#5dade2', titulo: 'Vista Panorâmica',      descricao: 'Vista de 180° para o mar de São Sebastião. O mar de Ilhabela em toda a sua grandiosidade, do amanhecer ao entardecer.' },
+  { icon: Waves,  cor: '#2980b9', titulo: 'Piscina Aquecida',       descricao: 'Piscina aquecida posicionada para se fundir com o horizonte do mar. O reflexo do azul é simplesmente hipnótico.' },
   { icon: Sun,    cor: '#e67e22', titulo: 'Pôr do Sol Épico',       descricao: 'Posicionamento oeste privilegiado. Os céus de Ilhabela ao entardecer são um espetáculo que se renova a cada dia.' },
   { icon: Leaf,   cor: '#27ae60', titulo: 'Mata Atlântica Nativa',  descricao: 'Cercada por floresta preservada, a pousada convive harmoniosamente com a biodiversidade única de Ilhabela.' },
   { icon: Star,   cor: '#f1c40f', titulo: 'Atendimento Exclusivo',  descricao: 'Apenas 4 suítes. Cada hóspede recebe atenção personalizada — de traslados ao cardápio do café da manhã.' },
@@ -114,8 +114,8 @@ const EXPERIENCIAS: Experiencia[] = [
 ];
 
 const GALERIA_ITEMS: GaleriaItem[] = [
-  { url: 'https://images.pexels.com/photos/1533720/pexels-photo-1533720.jpeg?auto=compress&cs=tinysrgb&w=900', cat: 'Vista',      label: 'Canal de São Sebastião' },
-  { url: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=900',  cat: 'Piscina',    label: 'Piscina borda infinita' },
+  { url: 'https://images.pexels.com/photos/1533720/pexels-photo-1533720.jpeg?auto=compress&cs=tinysrgb&w=900', cat: 'Vista',      label: 'Mar de São Sebastião' },
+  { url: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=900',  cat: 'Piscina',    label: 'Piscina com vista para o mar' },
   { url: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=900',  cat: 'Vista',      label: 'Vista panorâmica ao amanhecer' },
   { url: 'https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg?auto=compress&cs=tinysrgb&w=900',cat: 'Suítes',     label: 'Suíte Vista Mar' },
   { url: 'https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg?auto=compress&cs=tinysrgb&w=900',cat: 'Piscina',    label: 'Deck ao entardecer' },
@@ -288,7 +288,7 @@ function HeroSection({ scrollY }: { scrollY: number }) {
       >
         <img
           src="https://images.pexels.com/photos/1533720/pexels-photo-1533720.jpeg?auto=compress&cs=tinysrgb&w=2400"
-          alt="Vista panorâmica do canal de São Sebastião — Ilhabela"
+          alt="Vista panorâmica do mar de São Sebastião — Ilhabela"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/55 via-[#0d2240]/45 to-[#0a1628]/90" />
@@ -325,7 +325,7 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           A melhor vista de Ilhabela.
         </p>
         <p className="animate-hero-sub text-white/55 font-light mb-12 max-w-lg tracking-wide text-sm sm:text-base">
-          Suítes premium · Piscina borda infinita · Vista 180° para o canal
+          Suítes premium · Vista 180° para o mar
         </p>
 
         <div className="animate-hero-cta flex flex-col sm:flex-row gap-4">
@@ -497,7 +497,7 @@ function SuitesSection() {
 
 function PiscinaSection() {
   const fotos = [
-    { url: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=800', label: 'Piscina borda infinita' },
+    { url: 'https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=800', label: 'Piscina com vista para o mar' },
     { url: 'https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg?auto=compress&cs=tinysrgb&w=800', label: 'Deck ao entardecer' },
     { url: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800', label: 'Vista do deck' },
     { url: 'https://images.pexels.com/photos/2373201/pexels-photo-2373201.jpeg?auto=compress&cs=tinysrgb&w=800', label: 'Pôr do sol na piscina' },
@@ -518,14 +518,14 @@ function PiscinaSection() {
             </h2>
             <OceanDivider />
             <p className="text-white/50 text-sm leading-relaxed mt-6 mb-8">
-              Nossa piscina de borda infinita foi posicionada para criar a ilusão perfeita: o azul da água se confunde com o horizonte do canal de São Sebastião. Rodeada por deck de madeira de lei e vegetação nativa.
+              Nossa piscina aquecida foi posicionada para criar a ilusão perfeita: o azul da água se confunde com o horizonte do mar de São Sebastião. Rodeada por deck de madeira de lei e vegetação nativa.
             </p>
             <div className="space-y-4 mb-8">
               {[
-                { icon: Waves,  text: 'Piscina aquecida com borda infinita e vista para o mar' },
+                { icon: Waves,  text: 'Piscina aquecida com vista para o mar' },
                 { icon: Sun,    text: 'Deck com espreguiçadeiras premium e toldos retráteis' },
                 { icon: Coffee, text: 'Bar de piscina com drinques, sucos e snacks artesanais' },
-                { icon: Wind,   text: 'Área de relaxamento com brisa natural do canal' },
+                { icon: Wind,   text: 'Área de relaxamento com brisa natural do mar' },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-start gap-3 text-white/55 text-sm">
                   <div className="w-7 h-7 rounded-sm bg-sky-500/15 border border-sky-500/20 flex items-center justify-center shrink-0 mt-0.5">
@@ -674,7 +674,7 @@ function LocalizacaoSection() {
             </h2>
             <OceanDivider />
             <p className="text-white/50 text-sm leading-relaxed mt-6 mb-8">
-              Localizado em ponto privilegiado da ilha, o Refúgio das Estrelas oferece acesso rápido a praias, trilhas e ao centro histórico, sem abrir mão do silêncio e da vista única para o canal.
+              Localizado em ponto privilegiado da ilha, o Refúgio das Estrelas oferece acesso rápido a praias, trilhas e ao centro histórico, sem abrir mão do silêncio e da vista única para o mar.
             </p>
             <div className="space-y-4 mb-8">
               {[
@@ -920,7 +920,7 @@ function FooterSection() {
             </div>
             <p className="text-white/30 text-xs leading-relaxed mb-5">
               Pousada premium em Ilhabela, SP.<br />
-              A melhor vista do canal de São Sebastião.<br />
+              A melhor vista do mar de São Sebastião.<br />
               Natureza, exclusividade e silêncio.
             </p>
             <div className="flex gap-3">

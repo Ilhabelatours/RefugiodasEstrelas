@@ -42,12 +42,12 @@
     to   { opacity: 1; transform: scale(1); }
   }
 
-  .animate-hero-image   { animation: hero-scale-in 1.8s cubic-bezier(0.16,1,0.3,1) forwards; }
-  .animate-hero-badge   { opacity: 0; animation: hero-fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s  forwards; }
-  .animate-hero-badge2  { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.45s forwards; }
-  .animate-hero-title   { opacity: 0; animation: hero-fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s  forwards; }
-  .animate-hero-sub     { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.8s  forwards; }
-  .animate-hero-cta     { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 1.0s  forwards; }
-  .animate-hero-stats   { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 1.2s  forwards; }
-  .animate-hero-scroll  { opacity: 0; animation: hero-fade-in 1s ease 1.7s forwards; }
+  .animate-hero-image  { animation: hero-scale-in 1.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .animate-hero-logo   { opacity: 0; animation: hero-fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s forwards; }
+  .animate-hero-badge  { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.4s  forwards; }
+  .animate-hero-title  { opacity: 0; animation: hero-fade-up 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s  forwards; }
+  .animate-hero-sub    { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 0.8s  forwards; }
+  .animate-hero-cta    { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 1.0s  forwards; }
+  .animate-hero-stats  { opacity: 0; animation: hero-fade-up 0.7s cubic-bezier(0.16,1,0.3,1) 1.2s  forwards; }
+  .animate-hero-scroll { opacity: 0; animation: hero-fade-in 1s ease 1.7s forwards; }
 }

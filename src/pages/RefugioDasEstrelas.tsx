@@ -7,8 +7,6 @@ import {
   Anchor, Compass,
 } from 'lucide-react';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 type LucideIcon = typeof Star;
 
 interface Suite {
@@ -105,12 +103,12 @@ const SUITES: Suite[] = [
 ];
 
 const EXPERIENCIAS: Experiencia[] = [
-  { icon: Eye,    cor: '#0891b2', titulo: 'Vista Panorâmica',     descricao: 'Vista de 180° para o mar de São Sebastião. O mar de Ilhabela em toda a sua grandiosidade, do amanhecer ao entardecer.' },
-  { icon: Waves,  cor: '#0ea5e9', titulo: 'Piscina Aquecida',     descricao: 'Piscina aquecida posicionada para se fundir com o horizonte do mar. O reflexo do azul é simplesmente hipnótico.' },
-  { icon: Sun,    cor: '#f59e0b', titulo: 'Pôr do Sol Épico',     descricao: 'Posicionamento oeste privilegiado. Os céus de Ilhabela ao entardecer são um espetáculo que se renova a cada dia.' },
-  { icon: Leaf,   cor: '#16a34a', titulo: 'Mata Atlântica Nativa',descricao: 'Cercada por floresta preservada, a pousada convive harmoniosamente com a biodiversidade única de Ilhabela.' },
-  { icon: Star,   cor: '#f59e0b', titulo: 'Atendimento Exclusivo',descricao: 'Apenas 4 suítes. Cada hóspede recebe atenção personalizada — de traslados ao cardápio do café da manhã.' },
-  { icon: Anchor, cor: '#0891b2', titulo: 'Acesso ao Mar',        descricao: 'A 5 minutos das melhores praias e do pier de Ilhabela. Passeios de barco e mergulho organizados sob consulta.' },
+  { icon: Eye,    cor: '#0891b2', titulo: 'Vista Panorâmica',      descricao: 'Vista de 180° para o mar de São Sebastião. O mar de Ilhabela em toda a sua grandiosidade, do amanhecer ao entardecer.' },
+  { icon: Waves,  cor: '#0ea5e9', titulo: 'Piscina Aquecida',      descricao: 'Piscina aquecida posicionada para se fundir com o horizonte do mar. O reflexo do azul é simplesmente hipnótico.' },
+  { icon: Sun,    cor: '#f59e0b', titulo: 'Pôr do Sol Épico',      descricao: 'Posicionamento oeste privilegiado. Os céus de Ilhabela ao entardecer são um espetáculo que se renova a cada dia.' },
+  { icon: Leaf,   cor: '#16a34a', titulo: 'Mata Atlântica Nativa', descricao: 'Cercada por floresta preservada, a pousada convive harmoniosamente com a biodiversidade única de Ilhabela.' },
+  { icon: Star,   cor: '#f59e0b', titulo: 'Atendimento Exclusivo', descricao: 'Apenas 4 suítes. Cada hóspede recebe atenção personalizada — de traslados ao cardápio do café da manhã.' },
+  { icon: Anchor, cor: '#0891b2', titulo: 'Acesso ao Mar',         descricao: 'A 5 minutos das melhores praias e do pier de Ilhabela. Passeios de barco e mergulho organizados sob consulta.' },
 ];
 
 const GALERIA_ITEMS: GaleriaItem[] = [
@@ -169,12 +167,12 @@ function TropicalDivider() {
   );
 }
 
-function Eyebrow({ children, light = false }: { children: string; light?: boolean }) {
+function Eyebrow({ children, onDark = false }: { children: string; onDark?: boolean }) {
   return (
-    <p className={`flex items-center justify-center gap-2 tracking-[0.25em] uppercase text-xs font-semibold mb-4 ${light ? 'text-cyan-600' : 'text-cyan-500'}`}>
-      <span className={`w-6 h-px ${light ? 'bg-cyan-400/60' : 'bg-cyan-400/50'}`} />
+    <p className={`flex items-center justify-center gap-2 tracking-[0.25em] uppercase text-xs font-bold mb-4 ${onDark ? 'text-cyan-300' : 'text-cyan-600'}`}>
+      <span className={`w-6 h-px ${onDark ? 'bg-cyan-400/50' : 'bg-cyan-400/60'}`} />
       {children}
-      <span className={`w-6 h-px ${light ? 'bg-cyan-400/60' : 'bg-cyan-400/50'}`} />
+      <span className={`w-6 h-px ${onDark ? 'bg-cyan-400/50' : 'bg-cyan-400/60'}`} />
     </p>
   );
 }
@@ -197,35 +195,37 @@ function NavBar({ scrollY }: { scrollY: number }) {
     <nav
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/97 backdrop-blur-lg border-b border-cyan-100 shadow-sm shadow-cyan-100/50'
+          ? 'bg-white/97 backdrop-blur-lg border-b border-cyan-100 shadow-sm'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#inicio" className="flex items-center gap-2.5">
-          <img src="/LOGOTIPO_REFUGUI.png" alt="Refúgio das Estrelas" className="h-10 w-10 rounded-full object-cover" />
-          <div className="hidden sm:block">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-slate-500 leading-none">Pousada</p>
+      <div className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <a href="#inicio" className="flex items-center gap-2.5 shrink-0">
+          <img
+            src="/LOGOTIPO_REFUGUI.png"
+            alt="Refúgio das Estrelas"
+            className="h-10 w-10 rounded-full object-cover shadow-sm"
+          />
+          <div className="hidden sm:block leading-tight">
+            <p className={`text-[10px] font-bold tracking-[0.22em] uppercase leading-none mb-0.5 ${scrolled ? 'text-slate-400' : 'text-white/70'}`}>
+              Pousada
+            </p>
             <p
-              className="leading-tight"
-              style={{
-                fontFamily: '"Dancing Script", cursive',
-                fontSize: '1.15rem',
-                color: '#0e6b8a',
-                lineHeight: 1.1,
-              }}
+              style={{ fontFamily: '"Dancing Script", cursive', fontSize: '1.1rem', color: scrolled ? '#0e6b8a' : '#ffffff' }}
             >
               Refúgio das Estrelas
             </p>
           </div>
         </a>
 
-        <div className="hidden lg:flex items-center gap-8">
+        {/* Desktop nav */}
+        <div className="hidden lg:flex items-center gap-7">
           {links.map(([label, href]) => (
             <a
               key={label}
               href={href}
-              className={`text-xs tracking-widest uppercase font-medium transition-colors duration-200 ${
+              className={`text-[11px] tracking-widest uppercase font-semibold transition-colors duration-200 ${
                 scrolled ? 'text-slate-500 hover:text-cyan-600' : 'text-white/80 hover:text-white'
               }`}
             >
@@ -234,14 +234,15 @@ function NavBar({ scrollY }: { scrollY: number }) {
           ))}
           <a
             href="#reservas"
-            className="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-white text-xs font-bold tracking-wider uppercase transition-all duration-200 rounded-full shadow-md hover:shadow-cyan-300/50"
+            className="px-5 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-white text-[11px] font-bold tracking-wider uppercase transition-all duration-200 rounded-full shadow-md hover:shadow-lg hover:shadow-cyan-300/40"
           >
             Reservar
           </a>
         </div>
 
+        {/* Mobile burger */}
         <button
-          className={`lg:hidden transition-colors ${scrolled ? 'text-slate-600' : 'text-white/80'}`}
+          className={`lg:hidden transition-colors ${scrolled ? 'text-slate-600' : 'text-white'}`}
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         >
@@ -256,7 +257,7 @@ function NavBar({ scrollY }: { scrollY: number }) {
               key={label}
               href={href}
               onClick={() => setOpen(false)}
-              className="block text-slate-600 hover:text-cyan-600 text-sm tracking-widest uppercase py-3 border-b border-slate-100 transition-colors"
+              className="block text-slate-600 hover:text-cyan-600 text-sm tracking-widest uppercase py-3 border-b border-slate-100 transition-colors font-semibold"
             >
               {label}
             </a>
@@ -264,7 +265,7 @@ function NavBar({ scrollY }: { scrollY: number }) {
           <a
             href="#reservas"
             onClick={() => setOpen(false)}
-            className="block text-center mt-4 px-5 py-3.5 bg-cyan-500 text-white text-xs font-bold tracking-wider uppercase rounded-full"
+            className="block text-center mt-4 px-5 py-3.5 bg-cyan-500 text-white text-xs font-bold tracking-wider uppercase rounded-full shadow-md"
           >
             Reservar Agora
           </a>
@@ -279,6 +280,7 @@ function NavBar({ scrollY }: { scrollY: number }) {
 function HeroSection({ scrollY }: { scrollY: number }) {
   return (
     <section id="inicio" className="relative h-screen min-h-[700px] overflow-hidden">
+      {/* Background image with parallax */}
       <div
         className="absolute inset-0"
         style={{ transform: `translateY(${scrollY * 0.3}px) scale(1.12)` }}
@@ -288,81 +290,91 @@ function HeroSection({ scrollY }: { scrollY: number }) {
           alt="Vista panorâmica do mar de São Sebastião — Ilhabela"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a4a5c]/60 via-[#0a6880]/40 to-[#05303f]/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#074055]/55 via-[#063850]/50 to-[#041f2e]/85" />
       </div>
 
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent z-10" />
+      {/* Bottom fade to white */}
+      <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-white to-transparent z-10" />
 
-      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4">
-        <div className="animate-hero-badge mb-6">
+      {/* Hero content — single flex column, no absolute positioning conflicts */}
+      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-4 pb-28">
+        {/* Logo */}
+        <div className="animate-hero-logo mb-5">
           <img
             src="/LOGOTIPO_REFUGUI.png"
             alt="Logo Refúgio das Estrelas"
-            className="w-28 h-28 mx-auto rounded-full shadow-2xl ring-4 ring-white/30 object-cover"
+            className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-2xl ring-4 ring-white/40"
           />
         </div>
 
-        <div className="animate-hero-badge2 mb-2 flex items-center gap-3 border border-white/25 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full">
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse" />
-          <span className="text-white/90 tracking-[0.2em] uppercase text-xs font-semibold">
+        {/* Location badge */}
+        <div className="animate-hero-badge mb-5 flex items-center gap-2.5 border border-white/30 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse shrink-0" />
+          <span className="text-white/90 tracking-[0.2em] uppercase text-xs font-bold">
             Ilhabela · São Paulo · Brasil
           </span>
         </div>
 
+        {/* Title */}
         <h1
-          className="animate-hero-title text-white leading-none mb-2 mt-4"
+          className="animate-hero-title text-white leading-none mb-3"
           style={{
             fontFamily: '"Dancing Script", cursive',
-            fontSize: 'clamp(3rem, 10vw, 8rem)',
-            textShadow: '0 4px 40px rgba(5,48,63,0.6)',
-            color: '#ffffff',
+            fontSize: 'clamp(2.8rem, 9vw, 7rem)',
+            textShadow: '0 4px 32px rgba(4,31,46,0.7)',
           }}
         >
           Refúgio das Estrelas
         </h1>
 
+        {/* Subtitle */}
         <p
-          className="animate-hero-sub font-semibold mb-2 tracking-[0.25em] uppercase text-xs sm:text-sm"
+          className="animate-hero-sub font-bold mb-2 tracking-[0.22em] uppercase text-xs sm:text-sm"
           style={{ color: '#a5f3fc' }}
         >
           Pousada Premium · Ilhabela - Brasil
         </p>
-
-        <p className="animate-hero-sub text-white/70 font-light mb-10 max-w-lg tracking-wide text-sm sm:text-base">
+        <p className="animate-hero-sub text-white/65 font-light mb-10 max-w-md tracking-wide text-sm">
           A melhor vista de Ilhabela. Suítes exclusivas · Vista 180° para o mar
         </p>
 
-        <div className="animate-hero-cta flex flex-col sm:flex-row gap-4">
+        {/* CTA buttons */}
+        <div className="animate-hero-cta flex flex-col sm:flex-row gap-3 mb-16">
           <a
             href="#reservas"
-            className="group px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-white font-bold tracking-wider uppercase text-sm transition-all duration-300 rounded-full shadow-xl hover:shadow-cyan-400/50 flex items-center gap-2"
+            className="px-8 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-white font-bold tracking-wider uppercase text-sm transition-all duration-300 rounded-full shadow-xl shadow-cyan-900/40 hover:shadow-cyan-400/50 flex items-center justify-center gap-2"
           >
             Reservar Agora
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowRight className="w-4 h-4" />
           </a>
           <a
             href="#suites"
-            className="px-8 py-4 border-2 border-white/40 hover:border-white/70 hover:bg-white/10 text-white font-semibold tracking-wider uppercase text-sm transition-all duration-300 rounded-full backdrop-blur-sm"
+            className="px-8 py-3.5 border-2 border-white/50 hover:border-white text-white font-semibold tracking-wider uppercase text-sm transition-all duration-300 rounded-full hover:bg-white/10 backdrop-blur-sm flex items-center justify-center"
           >
             Ver as Suítes
           </a>
         </div>
 
-        <div className="animate-hero-stats absolute bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-6 sm:gap-10 bg-white/15 backdrop-blur-md border border-white/25 px-8 py-4 rounded-full whitespace-nowrap">
+        {/* Stats bar — inline, no absolute, so it doesn't overlap */}
+        <div className="animate-hero-stats flex items-center gap-5 sm:gap-10 bg-white/15 backdrop-blur-md border border-white/25 px-7 py-3.5 rounded-full">
           {[
             { val: '4',    label: 'Suítes exclusivas' },
             { val: '5.0★', label: 'Avaliação média' },
             { val: '180°', label: 'Vista para o mar' },
-          ].map(({ val, label }) => (
-            <div key={label} className="text-center">
-              <p className="text-white font-bold text-sm sm:text-base">{val}</p>
-              <p className="text-white/60 text-xs mt-0.5">{label}</p>
+          ].map(({ val, label }, i, arr) => (
+            <div key={label} className="flex items-center gap-5 sm:gap-10">
+              <div className="text-center">
+                <p className="text-white font-bold text-sm sm:text-base leading-none">{val}</p>
+                <p className="text-white/55 text-[10px] mt-1 whitespace-nowrap">{label}</p>
+              </div>
+              {i < arr.length - 1 && <span className="w-px h-8 bg-white/20 hidden sm:block" />}
             </div>
           ))}
         </div>
       </div>
 
-      <div className="animate-hero-scroll absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+      {/* Scroll indicator */}
+      <div className="animate-hero-scroll absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
         <ChevronDown className="text-white/50 w-5 h-5 animate-bounce" />
       </div>
     </section>
@@ -376,17 +388,14 @@ function ExperienciaSection() {
     <section id="experiencia" className="bg-white py-28 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
-          <Eyebrow light>A Experiência</Eyebrow>
+          <Eyebrow>A Experiência</Eyebrow>
           <h2
-            className="text-slate-800 leading-tight"
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#0e6b8a' }}
+            className="leading-tight"
+            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#0e6b8a' }}
           >
             Mais que uma hospedagem.
           </h2>
-          <p
-            className="text-slate-500 font-light"
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(1.4rem, 3.5vw, 2.2rem)' }}
-          >
+          <p className="text-slate-500 font-light" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}>
             Uma memória para sempre.
           </p>
           <TropicalDivider />
@@ -399,7 +408,7 @@ function ExperienciaSection() {
           {EXPERIENCIAS.map(({ icon: Icon, cor, titulo, descricao }) => (
             <div
               key={titulo}
-              className="group p-8 border border-slate-100 hover:border-cyan-200 bg-slate-50 hover:bg-white transition-all duration-400 rounded-2xl shadow-sm hover:shadow-md hover:shadow-cyan-100/60"
+              className="p-8 border border-slate-100 hover:border-cyan-200 bg-slate-50 hover:bg-white transition-all duration-300 rounded-2xl shadow-sm hover:shadow-lg hover:shadow-cyan-100/50"
             >
               <div
                 className="w-12 h-12 flex items-center justify-center mb-5 rounded-xl"
@@ -407,7 +416,7 @@ function ExperienciaSection() {
               >
                 <Icon className="w-5 h-5" style={{ color: cor }} />
               </div>
-              <h3 className="text-slate-800 text-base mb-2 font-semibold tracking-wide">{titulo}</h3>
+              <h3 className="text-slate-800 text-base mb-2 font-bold">{titulo}</h3>
               <p className="text-slate-500 text-sm leading-relaxed">{descricao}</p>
             </div>
           ))}
@@ -424,9 +433,9 @@ function SuitesSection() {
     <section id="suites" className="bg-slate-50 py-28 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
-          <Eyebrow light>Acomodações</Eyebrow>
+          <Eyebrow>Acomodações</Eyebrow>
           <h2
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#0e6b8a' }}
+            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#0e6b8a' }}
           >
             Nossas Suítes
           </h2>
@@ -455,7 +464,7 @@ function SuitesSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
                 <div className="absolute bottom-4 left-5 right-5">
-                  <p className="text-cyan-300 text-xs tracking-widest uppercase font-semibold mb-1">{suite.sub}</p>
+                  <p className="text-cyan-300 text-xs tracking-widest uppercase font-bold mb-1">{suite.sub}</p>
                   <h3
                     className="text-white text-2xl"
                     style={{ fontFamily: '"Dancing Script", cursive' }}
@@ -466,7 +475,7 @@ function SuitesSection() {
               </div>
 
               <div className="p-6">
-                <div className="flex items-center gap-4 mb-4 text-slate-400 text-xs font-medium">
+                <div className="flex items-center gap-4 mb-4 text-slate-400 text-xs font-semibold">
                   <span>{suite.capacidade}</span>
                   <span className="w-px h-3 bg-slate-200" />
                   <span>{suite.tamanho}</span>
@@ -474,7 +483,7 @@ function SuitesSection() {
                 <p className="text-slate-500 text-sm leading-relaxed mb-5">{suite.descricao}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {suite.comodidades.map((c) => (
-                    <span key={c} className="text-xs text-cyan-700 border border-cyan-200 bg-cyan-50 px-2.5 py-1 rounded-full font-medium">
+                    <span key={c} className="text-xs text-cyan-700 border border-cyan-200 bg-cyan-50 px-2.5 py-1 rounded-full font-semibold">
                       {c}
                     </span>
                   ))}
@@ -516,10 +525,10 @@ function PiscinaSection() {
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <Eyebrow light>Piscina & Deck</Eyebrow>
+            <Eyebrow>Piscina & Deck</Eyebrow>
             <h2
               className="leading-tight mb-4"
-              style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', color: '#0e6b8a' }}
+              style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', color: '#0e6b8a' }}
             >
               Onde o azul da piscina<br />se funde com o mar.
             </h2>
@@ -578,9 +587,9 @@ function GaleriaSection() {
     <section id="galeria" className="bg-slate-50 py-28 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <Eyebrow light>Galeria</Eyebrow>
+          <Eyebrow>Galeria</Eyebrow>
           <h2
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#0e6b8a' }}
+            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#0e6b8a' }}
           >
             O azul que só Ilhabela tem.
           </h2>
@@ -592,7 +601,7 @@ function GaleriaSection() {
             <button
               key={f}
               onClick={() => setFiltro(f)}
-              className={`px-4 py-2 text-xs tracking-widest uppercase font-semibold transition-all duration-300 rounded-full border ${
+              className={`px-4 py-2 text-xs tracking-widest uppercase font-bold transition-all duration-300 rounded-full border ${
                 filtro === f
                   ? 'bg-cyan-500 border-cyan-500 text-white shadow-md shadow-cyan-200'
                   : 'border-slate-200 text-slate-500 hover:border-cyan-300 hover:text-cyan-600 bg-white'
@@ -616,7 +625,7 @@ function GaleriaSection() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-cyan-900/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-2xl">
-                <p className="text-white text-xs tracking-wide font-medium">{item.label}</p>
+                <p className="text-white text-xs tracking-wide font-semibold">{item.label}</p>
               </div>
             </div>
           ))}
@@ -669,10 +678,10 @@ function LocalizacaoSection() {
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <Eyebrow light>Localização</Eyebrow>
+            <Eyebrow>Localização</Eyebrow>
             <h2
               className="leading-tight mb-2"
-              style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', color: '#0e6b8a' }}
+              style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', color: '#0e6b8a' }}
             >
               Ilhabela,<br />o paraíso ao alcance da mão.
             </h2>
@@ -707,7 +716,7 @@ function LocalizacaoSection() {
             </a>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-cyan-100/50">
+          <div className="rounded-2xl overflow-hidden shadow-xl shadow-cyan-100/50">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58934.33!2d-45.3589!3d-23.7767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d02c5ba5a61ab3%3A0x4e06c8e5a7d26f4a!2sIlhabela%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890"
               width="100%"
@@ -717,7 +726,7 @@ function LocalizacaoSection() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Localização Refúgio das Estrelas — Ilhabela, SP"
-              className="w-full"
+              className="w-full block"
             />
           </div>
         </div>
@@ -733,9 +742,9 @@ function AvaliacoesSection() {
     <section id="avaliacoes" className="bg-slate-50 py-28 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <Eyebrow light>Avaliações</Eyebrow>
+          <Eyebrow>Avaliações</Eyebrow>
           <h2
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', color: '#0e6b8a' }}
+            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4rem)', color: '#0e6b8a' }}
           >
             O que dizem nossos hóspedes.
           </h2>
@@ -752,7 +761,7 @@ function AvaliacoesSection() {
           {AVALIACOES.map((av, i) => (
             <div
               key={i}
-              className="p-7 border border-slate-100 hover:border-cyan-200 bg-white shadow-sm hover:shadow-md hover:shadow-cyan-100/50 transition-all duration-300 rounded-2xl"
+              className="p-7 border border-slate-100 hover:border-cyan-200 bg-white shadow-sm hover:shadow-lg hover:shadow-cyan-100/50 transition-all duration-300 rounded-2xl"
             >
               <div className="flex gap-1 mb-5">
                 {[...Array(av.nota)].map((_, j) => (
@@ -765,7 +774,7 @@ function AvaliacoesSection() {
                   {av.avatar}
                 </div>
                 <div>
-                  <p className="text-slate-700 text-sm font-semibold">{av.nome}</p>
+                  <p className="text-slate-700 text-sm font-bold">{av.nome}</p>
                   <p className="text-slate-400 text-xs">{av.origem} · {av.data}</p>
                 </div>
               </div>
@@ -774,11 +783,11 @@ function AvaliacoesSection() {
         </div>
 
         <div className="border border-slate-200 bg-white p-6 rounded-2xl text-center shadow-sm">
-          <p className="text-slate-400 text-xs uppercase tracking-widest mb-4">Avaliações verificadas em</p>
+          <p className="text-slate-400 text-xs uppercase tracking-widest mb-4 font-semibold">Avaliações verificadas em</p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             {['Google', 'Booking.com', 'Airbnb', 'TripAdvisor'].map((p, i, arr) => (
               <span key={p} className="flex items-center gap-6">
-                <span className="text-slate-400 text-sm font-semibold tracking-wider">{p}</span>
+                <span className="text-slate-400 text-sm font-bold tracking-wider">{p}</span>
                 {i < arr.length - 1 && <span className="w-px h-4 bg-slate-200" />}
               </span>
             ))}
@@ -800,15 +809,15 @@ function ReservasSection() {
           alt="Vista do mar de Ilhabela"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-cyan-900/85" />
+        <div className="absolute inset-0 bg-cyan-900/88" />
       </div>
 
       <div className="relative z-10 max-w-3xl mx-auto">
         <div className="text-center mb-14">
-          <Eyebrow>Reservas</Eyebrow>
+          <Eyebrow onDark>Reservas</Eyebrow>
           <h2
             className="text-white"
-            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4.5rem)' }}
+            style={{ fontFamily: '"Dancing Script", cursive', fontSize: 'clamp(2.4rem, 6vw, 4rem)' }}
           >
             Sua próxima escapada começa agora.
           </h2>
@@ -867,7 +876,7 @@ function ReservasSection() {
         </div>
 
         <div className="border border-white/15 bg-white/5 p-6 rounded-2xl">
-          <p className="text-white/30 text-xs uppercase tracking-widest mb-5">Políticas de reserva</p>
+          <p className="text-white/30 text-xs uppercase tracking-widest mb-5 font-bold">Políticas de reserva</p>
           <div className="grid sm:grid-cols-2 gap-3">
             {[
               'Check-in: a partir das 14h',
@@ -908,12 +917,12 @@ function FooterSection() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <img src="/LOGOTIPO_REFUGUI.png" alt="Refúgio das Estrelas" className="w-12 h-12 rounded-full object-cover" />
+              <img src="/LOGOTIPO_REFUGUI.png" alt="Refúgio das Estrelas" className="w-12 h-12 rounded-full object-cover shadow-md" />
               <div>
-                <p className="text-cyan-300/60 text-xs font-semibold tracking-[0.2em] uppercase leading-none mb-0.5">Pousada</p>
+                <p className="text-cyan-300/60 text-[10px] font-bold tracking-[0.2em] uppercase leading-none mb-0.5">Pousada</p>
                 <p
                   className="text-white leading-tight"
-                  style={{ fontFamily: '"Dancing Script", cursive', fontSize: '1.2rem' }}
+                  style={{ fontFamily: '"Dancing Script", cursive', fontSize: '1.15rem' }}
                 >
                   Refúgio das Estrelas
                 </p>
@@ -947,7 +956,7 @@ function FooterSection() {
           </div>
 
           <div>
-            <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-semibold">Navegação</p>
+            <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-bold">Navegação</p>
             <div className="space-y-2.5">
               {navLinks.map(([label, href]) => (
                 <a key={label} href={href} className="block text-white/40 hover:text-cyan-300 text-sm transition-colors">
@@ -958,7 +967,7 @@ function FooterSection() {
           </div>
 
           <div>
-            <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-semibold">Contato</p>
+            <p className="text-white/25 text-xs tracking-widest uppercase mb-5 font-bold">Contato</p>
             <div className="space-y-4">
               <a
                 href="https://wa.me/5512992181349"
@@ -1001,7 +1010,7 @@ function FooterSection() {
   );
 }
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+// ─── WhatsApp FAB ─────────────────────────────────────────────────────────────
 
 function WhatsAppFAB() {
   const [visible, setVisible] = useState(false);
@@ -1026,6 +1035,8 @@ function WhatsAppFAB() {
     </a>
   );
 }
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function RefugioDasEstrelas() {
   const [scrollY, setScrollY] = useState(0);
